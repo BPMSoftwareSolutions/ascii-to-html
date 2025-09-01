@@ -1,0 +1,12 @@
+Three-Codebase Architecture:
+
+[ Thin-Client Host ]                     [ Plugins ]                               [ Musical Conductor ]
+┌──────────────────────┐                 ┌─────────────────────────┐               ┌───────────────────────┐
+│ App.tsx  PanelSlot   │   mounts via    │ Library (ui)            │   play()      │ SequenceEngine        │
+│ SlotContainer        ├───────────────▶ │ LibraryComponent (sym)  ├──────────────▶│ EventBus / Logger     │
+│ initConductor()      │                 │ Canvas (ui)             │               │ Correlated logs (IDs) │
+└──────────────────────┘   manifest      │ CanvasComponent (sym)   │   callbacks   └───────────────────────┘
+         ▲                              │ ControlPanel (ui+cfg)   │◀──────────────┐
+         │                              └─────────────────────────┘   notify-ui()
+         └──────────── "slots" <───────────── UI renders; side-effects live in symphonies
+

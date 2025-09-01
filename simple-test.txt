@@ -1,0 +1,7 @@
+┌──────────────────────┐     ┌─────────────────────────┐     ┌───────────────────────┐
+│ App.tsx  PanelSlot   │     │ Library (ui)            │     │ SequenceEngine        │
+│ SlotContainer        ├────▶│ LibraryComponent (sym)  ├────▶│ EventBus / Logger     │
+│ initConductor()      │     │ Canvas (ui)             │     │ Correlated logs (IDs) │
+└──────────────────────┘     │ CanvasComponent (sym)   │     └───────────────────────┘
+                             │ ControlPanel (ui+cfg)   │
+                             └─────────────────────────┘

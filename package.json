@@ -1,0 +1,33 @@
+{
+  "name": "ascii-to-html",
+  "version": "1.0.0",
+  "description": "Convert ASCII box-drawing sketches into clean, interactive HTML+SVG diagrams",
+  "main": "ascii2html.js",
+  "bin": {
+    "ascii2html": "./ascii2html.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node ascii2html.js"
+  },
+  "keywords": [
+    "ascii",
+    "diagram",
+    "html",
+    "svg",
+    "box-drawing",
+    "visualization"
+  ],
+  "author": "BPM Software Solutions",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BPMSoftwareSolutions/ascii-to-html.git"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

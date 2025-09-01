@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASCII → HTML Diagram</title>
+<style>
+  html, body { height: 100%; margin: 0; }
+  body { background: #0b0d10; color: #e6edf3; font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji; }
+  .wrap { padding: 12px; }
+  .source {
+    white-space: pre;
+    background: #11161b;
+    border: 1px solid #202833;
+    border-radius: 10px;
+    padding: 12px;
+    overflow: auto;
+    max-height: 30vh;
+    color: #9bb4d0;
+    margin-bottom: 12px;
+  }
+  svg { width: 100%; height: 64vh; border: 1px solid #202833; border-radius: 10px; background: radial-gradient(ellipse at top, #0f141a, #0b0d10 60%); }
+  .box { fill: #111922; stroke: #2b3a4a; stroke-width: 2; filter: drop-shadow(0 1px 0 rgba(0,0,0,0.6)); }
+  .label { color: #e6edf3; font-weight: 600; line-height: 1.2; }
+  .edge path { fill: none; stroke: #6aa9ff; stroke-width: 2.5; }
+  .edge path:hover { stroke-width: 3; }
+  .legend { color: #8aa0b7; margin: 8px 0 2px; font-size: 12px; }
+</style>
+<div class="wrap">
+  <div class="legend">Original ASCII (kept for reference)</div>
+  <div class="source">┌──────────────────────┐     ┌─────────────────────────┐     ┌───────────────────────┐
+│ App.tsx  PanelSlot   │     │ Library (ui)            │     │ SequenceEngine        │
+│ SlotContainer        ├────▶│ LibraryComponent (sym)  ├────▶│ EventBus / Logger     │
+│ initConductor()      │     │ Canvas (ui)             │     │ Correlated logs (IDs) │
+└──────────────────────┘     │ CanvasComponent (sym)   │     └───────────────────────┘
+                             │ ControlPanel (ui+cfg)   │
+                             └─────────────────────────┘
+</div>
+  <svg viewBox="0 0 1132 540" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#6aa9ff"></polygon>
+      </marker>
+    </defs>
+    
+      <g class="node" data-id="0">
+        <rect x="1" y="1" width="274" height="86" rx="10" ry="10" class="box"/>
+        <foreignObject x="12" y="12" width="252" height="64">
+          <div xmlns="http://www.w3.org/1999/xhtml" class="label">App.tsx  PanelSlot<br/>SlotContainer<br/>initConductor()</div>
+        </foreignObject>
+        <title>App.tsx  PanelSlot
+SlotContainer
+initConductor()</title>
+      </g>
+
+      <g class="node" data-id="1">
+        <rect x="349" y="1" width="310" height="130" rx="10" ry="10" class="box"/>
+        <foreignObject x="360" y="12" width="288" height="108">
+          <div xmlns="http://www.w3.org/1999/xhtml" class="label">Library (ui)<br/>LibraryComponent (sym)<br/>Canvas (ui)<br/>CanvasComponent (sym)<br/>ControlPanel (ui+cfg)</div>
+        </foreignObject>
+        <title>Library (ui)
+LibraryComponent (sym)
+Canvas (ui)
+CanvasComponent (sym)
+ControlPanel (ui+cfg)</title>
+      </g>
+
+      <g class="node" data-id="2">
+        <rect x="733" y="1" width="286" height="86" rx="10" ry="10" class="box"/>
+        <foreignObject x="744" y="12" width="264" height="64">
+          <div xmlns="http://www.w3.org/1999/xhtml" class="label">SequenceEngine<br/>EventBus / Logger<br/>Correlated logs (IDs)</div>
+        </foreignObject>
+        <title>SequenceEngine
+EventBus / Logger
+Correlated logs (IDs)</title>
+      </g>
+    
+      <g class="edge">
+        <path d="M 282 44 L 342 66" marker-end="url(#arrow)"/>
+      </g>
+
+      <g class="edge">
+        <path d="M 666 66 L 726 44" marker-end="url(#arrow)"/>
+      </g>
+  </svg>
+</div>
+</html>
