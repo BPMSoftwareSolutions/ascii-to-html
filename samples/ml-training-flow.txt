@@ -1,0 +1,11 @@
+ML Training Flow:
+
+[ Data ]                                 [ Training ]                              [ Serving ]
+┌──────────────────────┐                 ┌─────────────────────────┐               ┌───────────────────────┐
+│ Datasets             │   split         │ Trainer                 │   exports     │ Model Registry         │
+│ Features             ├───────────────▶ │ GPU Nodes               ├──────────────▶│ Versioned Artifacts    │
+│ Labels               │                 │ Hyperparam Tuning       │               │ Metrics Dashboard      │
+└──────────────────────┘   validate      │ Evaluation              │   deploys     └───────────────────────┘
+          ▲                              │ Checkpoints             │◀──────────────┐
+          │                              └─────────────────────────┘   feedback
+          └──────────── drift ◀────────────────────────────── Monitoring

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Gradients for each codebase -->
+<linearGradient id="hostGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#667eea;stop-opacity:1"/>
+<stop offset="100%" style="stop-color:#764ba2;stop-opacity:1"/>
+</linearGradient>
+<linearGradient id="pluginGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#f093fb;stop-opacity:1"/>
+<stop offset="100%" style="stop-color:#f5576c;stop-opacity:1"/>
+</linearGradient>
+<linearGradient id="conductorGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#4facfe;stop-opacity:1"/>
+<stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1"/>
+</linearGradient>
+<linearGradient id="headerGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95"/>
+<stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.6"/>
+</linearGradient>
+<!-- Effects -->
+<filter height="140%" id="shadow" width="140%" x="-20%" y="-20%">
+<feDropShadow dx="4" dy="6" flood-color="#000" flood-opacity="0.15" stdDeviation="8"/>
+</filter>
+<filter height="200%" id="glow" width="200%" x="-50%" y="-50%">
+<feGaussianBlur result="coloredBlur" stdDeviation="3"/>
+<feMerge>
+<feMergeNode in="coloredBlur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+<style>
+      .codebase-box {
+        stroke: none;
+        rx: 12;
+        filter: url(#shadow);
+      }
+      .host-box { fill: url(#hostGradient); }
+      .plugin-box { fill: url(#pluginGradient); }
+      .conductor-box { fill: url(#conductorGradient); }
+      
+      .header {
+        fill: url(#headerGradient);
+        stroke: none;
+        rx: 12;
+        opacity: 0.9;
+      }
+      
+      .title {
+        font-family: 'SF Pro Display', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        fill: #2d3748;
+        text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+      }
+      
+      .main-title {
+        font-family: 'SF Pro Display', sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        fill: #2d3748;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      
+      .component {
+        font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+        font-size: 13px;
+        font-weight: 500;
+        fill: #ffffff;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      }
+      
+      .component-type {
+        font-family: 'SF Pro Text', sans-serif;
+        font-size: 11px;
+        fill: #e2e8f0;
+        opacity: 0.8;
+        font-style: italic;
+      }
+      
+      .arrow {
+        stroke-width: 3;
+        stroke: #2d3748; /* default fallback color so paths are visible even if subclass stroke fails */
+        fill: none;
+        filter: url(#glow);
+        stroke-linecap: round;
+      }
+      
+      .mount-arrow {
+        stroke: #f093fb;
+        marker-end: url(#mountArrow);
+      }
+      .play-arrow {
+        stroke: #4facfe;
+        marker-end: url(#playArrow);
+      }
+      .callback-arrow {
+        stroke: #43e97b;
+        marker-end: url(#callbackArrow);
+      }
+      .slot-arrow {
+        stroke: #ffd700;
+        marker-end: url(#slotArrow);
+        stroke-dasharray: 8,4;
+      }
+      /* Ensure any .arrow without a specific class still shows and gets arrowhead */
+      .arrow:not(.mount-arrow):not(.play-arrow):not(.callback-arrow):not(.slot-arrow) {
+        stroke: #2d3748;
+        marker-end: url(#arrowhead);
+      }
+      
+      .arrow-label {
+        font-family: 'SF Pro Text', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      }
+      
+      .mount-label { fill: #f093fb; }
+      .play-label { fill: #4facfe; }
+      .callback-label { fill: #43e97b; }
+      .slot-label { fill: #ffd700; }
+      
+      .flow-note {
+        font-family: 'SF Pro Text', sans-serif;
+        font-size: 12px;
+        font-style: italic;
+        fill: #718096;
+        text-anchor: middle;
+      }
+    </style>
+<!-- Arrow markers -->
+<marker id="mountArrow" markerHeight="8" markerWidth="12" orient="auto" refX="11" refY="4">
+<polygon fill="#f093fb" points="0 0, 12 4, 0 8"/>
+</marker>
+<marker id="playArrow" markerHeight="8" markerWidth="12" orient="auto" refX="11" refY="4">
+<polygon fill="#4facfe" points="0 0, 12 4, 0 8"/>
+</marker>
+<marker id="callbackArrow" markerHeight="8" markerWidth="12" orient="auto" refX="11" refY="4">
+<polygon fill="#43e97b" points="0 0, 12 4, 0 8"/>
+</marker>
+<marker id="slotArrow" markerHeight="8" markerWidth="12" orient="auto" refX="11" refY="4">
+<polygon fill="#ffd700" points="0 0, 12 4, 0 8"/>
+</marker>
+<!-- Fallback generic arrowhead if a class-specific marker is not applied -->
+<marker id="arrowhead" markerHeight="7" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="3.5">
+<polygon fill="#2d3748" points="0 0, 10 3.5, 0 7"/>
+</marker>
+</defs>
+<!-- Main Title -->
+<text class="main-title" text-anchor="middle" x="600" y="40">🏗️ Three-Codebase Architecture</text>
+<!-- Thin-Client Host -->
+<rect class="codebase-box host-box" height="220" width="280" x="50" y="80"/>
+<rect class="header" height="35" width="280" x="50" y="80"/>
+<text class="title" x="70" y="100">💻 Thin-Client Host</text>
+<text class="component" x="70" y="135">App.tsx</text>
+<text class="component" x="70" y="155">PanelSlot</text>
+<text class="component" x="70" y="175">SlotContainer</text>
+<text class="component" x="70" y="195">initConductor()</text>
+<!-- Plugins -->
+<rect class="codebase-box plugin-box" height="300" width="280" x="460" y="80"/>
+<rect class="header" height="35" width="280" x="460" y="80"/>
+<text class="title" x="480" y="100">🔌 Plugins</text>
+<text class="component" x="480" y="135">Library</text>
+<text class="component-type" x="580" y="135">(ui)</text>
+<text class="component" x="480" y="155">LibraryComponent</text>
+<text class="component-type" x="620" y="155">(sym)</text>
+<text class="component" x="480" y="185">Canvas</text>
+<text class="component-type" x="540" y="185">(ui)</text>
+<text class="component" x="480" y="205">CanvasComponent</text>
+<text class="component-type" x="600" y="205">(sym)</text>
+<text class="component" x="480" y="235">ControlPanel</text>
+<text class="component-type" x="590" y="235">(ui+cfg)</text>
+<!-- Musical Conductor -->
+<rect class="codebase-box conductor-box" height="220" width="280" x="870" y="80"/>
+<rect class="header" height="35" width="280" x="870" y="80"/>
+<text class="title" x="890" y="100">🎼 Musical Conductor</text>
+<text class="component" x="890" y="135">SequenceEngine</text>
+<text class="component" x="890" y="155">EventBus / Logger</text>
+<text class="component" x="890" y="175">Correlated logs (IDs)</text>
+<!-- Arrows and labels -->
+<!-- mounts via manifest (Host to Plugins) -->
+<!-- Adjusted to attach at mid-right of Host box to mid-left of Plugins header area -->
+
+<text class="arrow-label mount-label" x="395" y="170">mounts via</text>
+<text class="arrow-label mount-label" x="395" y="188">manifest</text>
+<!-- play() (Plugins to Conductor) -->
+<!-- Adjusted to attach at mid-right of Plugins box to mid-left of Conductor box -->
+
+<text class="arrow-label play-label" x="805" y="170">play()</text>
+<!-- callbacks notify-ui() -->
+<path class="arrow callback-arrow" d="M 860 210 L 750 250"/>
+<text class="arrow-label callback-label" x="805" y="240">callbacks</text>
+<text class="arrow-label callback-label" x="805" y="255">notify-ui()</text>
+<!-- "slots" feedback loop -->
+<path class="arrow slot-arrow" d="M 450 320 Q 250 400 180 310"/>
+<text class="arrow-label slot-label" x="320" y="380">"slots"</text>
+<!-- Flow explanation -->
+<text class="flow-note" x="600" y="450">UI renders; side-effects live in symphonies</text>
+<!-- Decorative elements -->
+<circle cx="190" cy="250" fill="#667eea" opacity="0.6" r="3">
+<animate attributeName="opacity" dur="2s" repeatCount="indefinite" values="0.3;0.8;0.3"/>
+</circle>
+<circle cx="600" cy="320" fill="#f093fb" opacity="0.6" r="3">
+<animate attributeName="opacity" begin="0.5s" dur="2.5s" repeatCount="indefinite" values="0.3;0.8;0.3"/>
+</circle>
+<circle cx="1010" cy="250" fill="#4facfe" opacity="0.6" r="3">
+<animate attributeName="opacity" begin="1s" dur="1.8s" repeatCount="indefinite" values="0.3;0.8;0.3"/>
+</circle>
+<!-- Musical note decoration -->
+<text fill="#ffd700" font-size="18" opacity="0.7" x="80" y="60">🎵</text>
+<text fill="#ffd700" font-size="16" opacity="0.7" x="1120" y="60">♪</text>
+<path class="arrow mount-arrow" d="M 330 180 L 460 180" fill="none" marker-end="url(#mountArrow)" stroke="#f093fb" stroke-width="3" vector-effect="non-scaling-stroke"/><path class="arrow play-arrow" d="M 740 180 L 870 180" fill="none" marker-end="url(#playArrow)" stroke="#4facfe" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>

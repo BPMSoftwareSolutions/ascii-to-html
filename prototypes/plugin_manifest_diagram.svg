@@ -1,0 +1,135 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="manifestGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="panelGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="controlGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.4" />
+    </linearGradient>
+    
+    <!-- Shadows -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+    
+    <!-- Glow effect for arrows -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      .box {
+        stroke: none;
+        rx: 12;
+        filter: url(#shadow);
+      }
+      .manifest-box { fill: url(#manifestGradient); }
+      .panel-box { fill: url(#panelGradient); }
+      .control-box { fill: url(#controlGradient); }
+      
+      .header {
+        fill: url(#headerGradient);
+        stroke: none;
+        rx: 12;
+        opacity: 0.8;
+      }
+      .text {
+        font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+        font-size: 13px;
+        fill: #ffffff;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      }
+      .title {
+        font-family: 'SF Pro Display', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        fill: #2d3748;
+        text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+      }
+      .arrow {
+        stroke: #667eea;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead);
+        filter: url(#glow);
+      }
+      .json {
+        fill: #ffd700;
+        font-weight: 500;
+      }
+      .comment {
+        fill: #e2e8f0;
+        font-style: italic;
+        opacity: 0.9;
+      }
+      .step-number {
+        font-family: 'SF Pro Display', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        fill: #ffffff;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+      }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" 
+            refX="11" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#667eea" />
+    </marker>
+  </defs>
+
+  <!-- First box: plugin-manifest.json -->
+  <rect x="50" y="20" width="700" height="80" class="box manifest-box"/>
+  <rect x="50" y="20" width="700" height="30" class="header"/>
+  <text x="60" y="40" class="title">📋 plugin-manifest.json</text>
+  
+  <text x="60" y="65" class="text json">{ "id": "LibraryPlugin",</text>
+  <text x="70" y="80" class="text json">"ui": { "slot": "library", "module": "/plugins/library", "export": "..." }</text>
+  <text x="60" y="95" class="text json">}</text>
+
+  <!-- Arrow 1 -->
+  <line x1="400" y1="110" x2="400" y2="140" class="arrow"/>
+
+  <!-- Second box: PanelSlot.tsx -->
+  <rect x="50" y="150" width="700" height="120" class="box panel-box"/>
+  <rect x="50" y="150" width="700" height="30" class="header"/>
+  <text x="60" y="170" class="title">⚡ PanelSlot.tsx</text>
+  
+  <text x="80" y="195" class="step-number">1.</text>
+  <text x="100" y="195" class="text">Read manifest</text>
+  <text x="80" y="210" class="step-number">2.</text>
+  <text x="100" y="210" class="text">Find plugin for slot="library"</text>
+  <text x="80" y="225" class="step-number">3.</text>
+  <text x="100" y="225" class="text">Dynamic import("/plugins/library/index.ts")</text>
+  <text x="80" y="240" class="step-number">4.</text>
+  <text x="100" y="240" class="text">Mount LibraryPanel component</text>
+
+  <!-- Arrow 2 -->
+  <line x1="400" y1="280" x2="400" y2="310" class="arrow"/>
+
+  <!-- Third box: Control Panel Fields -->
+  <rect x="50" y="320" width="700" height="100" class="box control-box"/>
+  <rect x="50" y="320" width="700" height="30" class="header"/>
+  <text x="60" y="340" class="title">🎛️ Control Panel Fields (JSON-driven)</text>
+  
+  <text x="60" y="360" class="text">Button: [text: "Click me", variant: "primary", disabled: false]</text>
+  <text x="60" y="375" class="text">CSS Classes: ["btn-large", "btn-rounded"] </text>
+  <text x="430" y="375" class="text comment">← allowed from JSON</text>
+
+  <!-- Flow indicators -->
+  <text x="420" y="128" class="text comment">↓</text>
+  <text x="420" y="298" class="text comment">↓</text>
+</svg>

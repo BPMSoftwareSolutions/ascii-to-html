@@ -1,0 +1,11 @@
+Event-Driven Architecture:
+
+[ Producer ]                             [ Broker ]                               [ Consumers ]
+┌──────────────────────┐                 ┌─────────────────────────┐               ┌───────────────────────┐
+│ Services             │   emit          │ Topic Partitions        │   deliver     │ Microservices          │
+│ Domain Events        ├───────────────▶ │ Retention               ├──────────────▶│ Stateful Subscribers   │
+│ Outbox Pattern       │                 │ Replay                  │               │ Projections / CQRS     │
+└──────────────────────┘   ack           │ Compaction              │   backpressure└───────────────────────┘
+          ▲                              │ Dead-letter Topic       │◀──────────────┐
+          │                              └─────────────────────────┘   retries
+          └──────────── schema ◀────────────────────────── Registry

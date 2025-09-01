@@ -1,0 +1,11 @@
+IoT Data Pipeline:
+
+[ Devices ]                              [ Ingestion ]                              [ Analytics ]
+┌──────────────────────┐                 ┌─────────────────────────┐               ┌───────────────────────┐
+│ Sensors/Edge         │   publish       │ MQTT Broker             │   stream      │ Stream Processor       │
+│ Telemetry            ├───────────────▶ │ Ingestor                ├──────────────▶│ Stateful Operators     │
+│ Commands             │                 │ Transform/Enrich        │               │ Alerts / Metrics       │
+└──────────────────────┘   subscribe     │ Buffer/Queue            │   results     └───────────────────────┘
+          ▲                              │ Dead-letter Queue       │◀──────────────┐
+          │                              └─────────────────────────┘   feedback
+          └──────────── updates ◀────────────────────── Device Twin / Control

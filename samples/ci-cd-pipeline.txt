@@ -1,0 +1,11 @@
+CI/CD Pipeline:
+
+[ Source ]                               [ Build/CI ]                             [ Deploy ]
+┌──────────────────────┐                 ┌─────────────────────────┐              ┌───────────────────────┐
+│ Git Repos            │   push          │ CI Orchestrator         │   package    │ Artifact Repo          │
+│ Branches/PRs         ├───────────────▶ │ Unit/Integration Tests  ├─────────────▶│ Release Channels       │
+│ Code Review          │                 │ Build + Scan            │              │ Rollout Controller     │
+└──────────────────────┘   status        │ Cache                   │   release    └───────────────────────┘
+          ▲                              │ Notifications           │◀─────────────┐
+          │                              └─────────────────────────┘   rollbacks
+          └──────────── webhooks ◀───────────────────────── GitHub/GitLab

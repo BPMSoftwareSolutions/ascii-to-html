@@ -1,0 +1,11 @@
+Web App Architecture:
+
+[ Client ]                               [ Backend ]                               [ Data Services ]
+┌──────────────────────┐                 ┌─────────────────────────┐               ┌───────────────────────┐
+│ Browser (UI)         │   requests      │ API Gateway             │   routes      │ Auth Service           │
+│ SPA App              ├───────────────▶ │ REST Controllers        ├──────────────▶│ User Store             │
+│ React/Vue            │                 │ Business Logic          │               │ Token Issuer           │
+└──────────────────────┘   responses     │ Validation              │   queries     └───────────────────────┘
+          ▲                              │ Rate Limiter            │◀──────────────┐
+          │                              └─────────────────────────┘   callbacks
+          └──────────── cache ◀────────────────────────── CDN Edge / Service Worker

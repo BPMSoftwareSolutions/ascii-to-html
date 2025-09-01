@@ -1,0 +1,197 @@
+<svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="rootGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="srcGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="typesGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="fileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38f9d7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.6" />
+    </linearGradient>
+    
+    <!-- Shadows -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="5" stdDeviation="6" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+    
+    <!-- Glow effects -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Musical note animation -->
+    <filter id="noteGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      .folder {
+        stroke: none;
+        rx: 10;
+        filter: url(#shadow);
+      }
+      .root-folder { fill: url(#rootGradient); }
+      .src-folder { fill: url(#srcGradient); }
+      .types-folder { fill: url(#typesGradient); }
+      .file { fill: url(#fileGradient); }
+      
+      .header {
+        fill: url(#headerGradient);
+        stroke: none;
+        rx: 10;
+        opacity: 0.9;
+      }
+      
+      .folder-title {
+        font-family: 'SF Pro Display', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        fill: #2d3748;
+        text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+      }
+      
+      .file-name {
+        font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+        font-size: 14px;
+        font-weight: 500;
+        fill: #ffffff;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      }
+      
+      .comment {
+        font-family: 'SF Pro Text', sans-serif;
+        font-size: 12px;
+        font-style: italic;
+        fill: #e2e8f0;
+        opacity: 0.9;
+      }
+      
+      .connection-line {
+        stroke: #667eea;
+        stroke-width: 2;
+        stroke-dasharray: 5,3;
+        opacity: 0.6;
+        filter: url(#glow);
+      }
+      
+      .musical-note {
+        fill: #ffd700;
+        filter: url(#noteGlow);
+        opacity: 0.8;
+      }
+      
+      .title-main {
+        font-family: 'SF Pro Display', sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        fill: #2d3748;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      
+      .subtitle {
+        font-family: 'SF Pro Text', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        fill: #718096;
+      }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="30" class="title-main" text-anchor="middle">🎼 Musical Conductor Architecture</text>
+  <text x="450" y="50" class="subtitle" text-anchor="middle">External Orchestration Engine</text>
+
+  <!-- Animated musical notes -->
+  <text x="200" y="40" class="musical-note" font-size="20">♪</text>
+  <animateTransform attributeName="transform" type="translate" values="0,0; 10,-5; 0,0" dur="3s" repeatCount="indefinite"/>
+  <text x="700" y="35" class="musical-note" font-size="16">♫</text>
+  <animateTransform attributeName="transform" type="translate" values="0,0; -8,3; 0,0" dur="2.5s" begin="1s" repeatCount="indefinite"/>
+
+  <!-- Root folder: musical-conductor/ -->
+  <rect x="50" y="80" width="800" height="50" class="folder root-folder"/>
+  <rect x="50" y="80" width="800" height="30" class="header"/>
+  <text x="70" y="100" class="folder-title">📁 musical-conductor/</text>
+  <text x="650" y="115" class="comment"># External orchestration engine</text>
+
+  <!-- Connection lines -->
+  <line x1="150" y1="140" x2="150" y2="170" class="connection-line"/>
+  <line x1="150" y1="170" x2="200" y2="170" class="connection-line"/>
+  <line x1="200" y1="170" x2="200" y2="190" class="connection-line"/>
+  
+  <line x1="200" y1="170" x2="600" y2="170" class="connection-line"/>
+  <line x1="600" y1="170" x2="600" y2="480" class="connection-line"/>
+
+  <!-- src/ folder -->
+  <rect x="100" y="190" width="450" height="280" class="folder src-folder"/>
+  <rect x="100" y="190" width="450" height="30" class="header"/>
+  <text x="120" y="210" class="folder-title">📂 src/</text>
+
+  <!-- Files in src/ -->
+  <!-- ConductorClient.ts -->
+  <rect x="130" y="240" width="380" height="35" class="folder file"/>
+  <text x="145" y="260" class="file-name">🎭 ConductorClient.ts</text>
+  <text x="320" y="260" class="comment"># Main orchestration API</text>
+
+  <!-- SequenceEngine.ts -->
+  <rect x="130" y="285" width="380" height="35" class="folder file"/>
+  <text x="145" y="305" class="file-name">🎼 SequenceEngine.ts</text>
+  <text x="320" y="305" class="comment"># Symphony execution</text>
+
+  <!-- EventBus.ts -->
+  <rect x="130" y="330" width="380" height="35" class="folder file"/>
+  <text x="145" y="350" class="file-name">📡 EventBus.ts</text>
+  <text x="320" y="350" class="comment"># Pub/sub coordination</text>
+
+  <!-- Logger.ts -->
+  <rect x="130" y="375" width="380" height="35" class="folder file"/>
+  <text x="145" y="395" class="file-name">📝 Logger.ts</text>
+  <text x="320" y="395" class="comment"># Centralized logging</text>
+
+  <!-- types/ folder -->
+  <rect x="580" y="480" width="300" height="180" class="folder types-folder"/>
+  <rect x="580" y="480" width="300" height="30" class="header"/>
+  <text x="600" y="500" class="folder-title">📋 types/</text>
+
+  <!-- Files in types/ -->
+  <!-- Symphony.ts -->
+  <rect x="610" y="530" width="240" height="35" class="folder file"/>
+  <text x="625" y="550" class="file-name">🎵 Symphony.ts</text>
+  <text x="750" y="550" class="comment"># Sequence definitions</text>
+
+  <!-- Beat.ts -->
+  <rect x="610" y="575" width="240" height="35" class="folder file"/>
+  <text x="625" y="595" class="file-name">🥁 Beat.ts</text>
+  <text x="720" y="595" class="comment"># Execution units</text>
+
+  <!-- Floating musical elements for ambiance -->
+  <text x="80" y="300" class="musical-note" font-size="14" opacity="0.4">♩</text>
+  <text x="520" y="250" class="musical-note" font-size="12" opacity="0.3">♬</text>
+  <text x="850" y="400" class="musical-note" font-size="16" opacity="0.5">♪</text>
+  
+  <!-- Animated conductor's baton path -->
+  <path d="M 750 150 Q 780 120 820 150 Q 780 180 750 150" stroke="#ffd700" stroke-width="3" 
+        fill="none" opacity="0.6" filter="url(#glow)">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+  </path>
+</svg>
