@@ -473,9 +473,12 @@ const ascii2svg = {
   }
 };
 
-// Export for different environments
+// New entry point delegates to src/ (ESM)
+const { convert } = require('./src/index.js');
+const converter = { convert };
+
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = ascii2svg;
+  module.exports = converter;
 } else if (typeof window !== 'undefined') {
-  window.ascii2svg = ascii2svg;
+  window.ascii2svg = converter;
 }
